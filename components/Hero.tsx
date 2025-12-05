@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
+import RippleButton from '@/components/animata/button/ripple-button';
 
 const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
     useEffect(() => {
-        const targetDate = new Date('2025-12-31T00:00:00'); // Example date
+        const targetDate = new Date('2026-01-17T00:00:00'); // Updated date
         const interval = setInterval(() => {
             const now = new Date();
             const difference = targetDate.getTime() - now.getTime();
@@ -57,11 +58,11 @@ const Hero = () => {
                     Build the Future of the Galaxy
                 </h2>
                 <p className="text-xl md:text-2xl font-inter text-gray-300 mb-8">
-                    December 31st, 2025 • Virtual
+                    January 17th - 18th, 2026 • Virtual
                 </p>
-                <button className="px-8 py-4 bg-gold-500 text-black font-bold text-xl rounded-full hover:bg-gold-600 transition-all shadow-[0_0_20px_rgba(255,215,0,0.5)] font-orbitron">
-                    Register via Devfolio
-                </button>
+                <RippleButton onClick={() => window.open('https://luma.com/369a1jle', '_blank')}>
+                    Register Now
+                </RippleButton>
                 <Countdown />
             </motion.div>
         </section>

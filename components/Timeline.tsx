@@ -5,39 +5,33 @@ import { Rocket, Code, Users, Award, Calendar } from "lucide-react";
 
 const milestones = [
     {
-        year: "Feb 15",
+        year: "Dec 15",
         title: "Registration Opens",
-        description: "Mission control accepts new cadets.",
+        description: "Applications open for all tracks.",
         icon: <Rocket className="w-4 h-4 text-gold-500" />,
     },
     {
-        year: "Mar 01",
+        year: "Jan 17",
         title: "Opening Ceremony",
-        description: "Launch sequence initiated.",
+        description: "Kickoff and Problem Statements.",
         icon: <Calendar className="w-4 h-4 text-gold-500" />,
     },
     {
-        year: "Mar 02",
+        year: "Jan 17",
         title: "Hacking Starts",
-        description: "Engage warp drive.",
+        description: "Build your solutions.",
         icon: <Code className="w-4 h-4 text-gold-500" />,
     },
     {
-        year: "Mar 03",
-        title: "Mentoring Sessions",
-        description: "Guidance from the stars.",
-        icon: <Users className="w-4 h-4 text-gold-500" />,
-    },
-    {
-        year: "Mar 04",
+        year: "Jan 18",
         title: "Submission Deadline",
-        description: "Re-entry into atmosphere.",
+        description: "Submit your projects.",
         icon: <Award className="w-4 h-4 text-gold-500" />,
     },
     {
-        year: "Mar 05",
-        title: "Winners Announced",
-        description: "Mission accomplished.",
+        year: "Jan 18",
+        title: "Closing Ceremony",
+        description: "Winners Announcement.",
         icon: <Award className="w-4 h-4 text-gold-500" />,
     },
 ];

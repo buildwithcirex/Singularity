@@ -33,8 +33,8 @@ export default function RootLayout({
                     <Galaxy
                         mouseRepulsion={true}
                         mouseInteraction={true}
-                        density={1.5}
-                        glowIntensity={0.1}
+                        density={5}
+                        glowIntensity={0.3}
                         saturation={0}
                         hueShift={240}
                     />

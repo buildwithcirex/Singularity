@@ -1,26 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import FlipCard from '@/components/animata/card/flip-card';
 
 const tracks = [
     {
-        title: 'Deep Space AI',
-        description: 'Machine learning for celestial navigation or data analysis.',
+        title: 'Agentic AI',
+        description: 'Build autonomous agents that can reason, act, and solve complex problems.',
         icon: '🤖',
     },
     {
-        title: 'Orbital Blockchain',
-        description: 'Decentralized systems for satellite communication.',
-        icon: '🔗',
-    },
-    {
-        title: 'Terraforming Tech',
-        description: 'Sustainability and habitat solutions.',
-        icon: '🌱',
-    },
-    {
-        title: 'Open Interstellar',
-        description: 'Open innovation for creative space solutions.',
+        title: 'Open Innovation',
+        description: 'Push the boundaries of technology with creative solutions in any domain.',
         icon: '🚀',
     },
 ];
@@ -36,22 +27,21 @@ const About = () => {
                     Singularity is the convergence of space and technology. We invite the brightest minds to build the future of interstellar exploration.
                 </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-6xl">
-                {tracks.map((track, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: index * 0.1 }}
-                        className="p-8 rounded-xl bg-white/5 backdrop-blur-sm border border-gold-500/30 hover:border-gold-500 transition-all group"
-                    >
-                        <div className="text-4xl mb-4">{track.icon}</div>
-                        <h3 className="text-2xl font-orbitron font-bold text-white mb-2 group-hover:text-gold-500 transition-colors">
-                            {track.title}
-                        </h3>
-                        <p className="font-inter text-gray-400">{track.description}</p>
-                    </motion.div>
-                ))}
+            <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-6xl">
+                <FlipCard
+                    image="/track_1.svg"
+                    title="Agentic AI"
+                    subtitle="Agentic AI Track"
+                    description="Build autonomous agents that can reason, act, and solve complex problems. Create systems that go beyond chat to perform real-world tasks."
+                    rotate="y"
+                />
+                <FlipCard
+                    image="/track_2.svg"
+                    title="Open Innovation"
+                    subtitle="Open Innovation"
+                    description="Push the boundaries of technology with creative solutions in any domain. Use blockchain, AR/VR, or any other tech stack to build something amazing."
+                    rotate="y"
+                />
             </div>
         </section>
     );

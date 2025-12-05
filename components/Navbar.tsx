@@ -1,51 +1,120 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
 
 interface NavbarProps {
     isLoading?: boolean;
 }
 
 const Navbar = ({ isLoading = false }: NavbarProps) => {
+    const [isOpen, setIsOpen] = useState(false);
+
     const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
         e.preventDefault();
+        e.stopPropagation(); // Prevent navbar toggling
         const targetId = href.replace('#', '');
         const element = document.getElementById(targetId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
+            setIsOpen(false); // Close navbar after clicking a link
+        }
+    };
+
+    const leftItems = ['About', 'Stats', 'Schedule'];
+    const rightItems = ['Prizes', 'Sponsors', 'FAQ'];
+
+    const containerVariants = {
+        closed: {
+            width: '100px',
+            height: '70px',
+            borderRadius: '9999px',
+            transition: { type: "spring", stiffness: 300, damping: 30 }
+        },
+        open: {
+            width: 'auto',
+            height: '70px',
+            borderRadius: '9999px',
+            transition: { type: "spring", stiffness: 300, damping: 30 }
+        }
+    };
+
+    const itemVariants = {
+        closed: { opacity: 0, scale: 0.8, display: 'none' }, // Check display none
+        open: {
+            opacity: 1,
+            scale: 1,
+            display: 'block',
+            transition: { delay: 0.1, duration: 0.2 }
         }
     };
 
     return (
-        <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-black/10 backdrop-blur-md border-b border-white/10">
-            <div className="flex items-center gap-2">
-                {!isLoading && (
+        <div className="fixed top-8 left-0 right-0 z-50 flex justify-center pointer-events-none">
+            {!isLoading && (
+                <motion.nav
+                    className="pointer-events-auto bg-black/50 backdrop-blur-2xl border border-white/20 shadow-[0_0_20px_rgba(255,255,255,0.1)] flex items-center justify-center overflow-hidden cursor-pointer"
+                    initial="closed"
+                    animate={isOpen ? "open" : "closed"}
+                    variants={containerVariants}
+                    onClick={() => setIsOpen(!isOpen)}
+                >
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                className="flex items-center gap-8 px-8 font-inter text-base font-medium"
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: 20, transition: { duration: 0.1 } }}
+                            >
+                                {leftItems.map((item) => (
+                                    <Link
+                                        key={item}
+                                        href={`#${item.toLowerCase()}`}
+                                        onClick={(e) => handleScroll(e, `#${item.toLowerCase()}`)}
+                                        className="text-white hover:text-gold-500 transition-colors whitespace-nowrap"
+                                    >
+                                        {item}
+                                    </Link>
+                                ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+
+                    {/* Logo */}
                     <motion.div
                         layoutId="main-logo"
-                        className="relative w-10 h-10"
-                        transition={{ duration: 0.8, ease: [0.6, 0.01, -0.05, 0.9] }}
+                        className="relative w-12 h-12 shrink-0 mx-2"
+                        transition={{ duration: 0.6, ease: "easeInOut" }}
+                        animate={{ rotate: isOpen ? 360 : 0 }}
                     >
                         <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" />
                     </motion.div>
-                )}
-                <span className="text-2xl font-orbitron font-bold text-white">Singularity</span>
-            </div>
-            <div className="hidden md:flex items-center gap-8">
-                {['About', 'Stats', 'Schedule', 'Prizes', 'Sponsors', 'FAQ'].map((item) => (
-                    <Link
-                        key={item}
-                        href={`#${item.toLowerCase()}`}
-                        onClick={(e) => handleScroll(e, `#${item.toLowerCase()}`)}
-                        className="text-white hover:text-gold-500 transition-colors font-inter"
-                    >
-                        {item}
-                    </Link>
-                ))}
-            </div>
-            <button className="px-6 py-2 bg-gold-500 text-black font-bold rounded-full hover:bg-gold-600 transition-colors font-orbitron">
-                Register Now
-            </button>
-        </nav>
+
+                    <AnimatePresence>
+                        {isOpen && (
+                            <motion.div
+                                className="flex items-center gap-8 px-8 font-inter text-base font-medium"
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                exit={{ opacity: 0, x: -20, transition: { duration: 0.1 } }}
+                            >
+                                {rightItems.map((item) => (
+                                    <Link
+                                        key={item}
+                                        href={`#${item.toLowerCase()}`}
+                                        onClick={(e) => handleScroll(e, `#${item.toLowerCase()}`)}
+                                        className="text-white hover:text-gold-500 transition-colors whitespace-nowrap"
+                                    >
+                                        {item}
+                                    </Link>
+                                ))}
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.nav>
+            )}
+        </div>
     );
 };
 

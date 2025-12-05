@@ -43,7 +43,7 @@ const Stats = () => {
         <section id="stats" className="py-20 bg-black/50 backdrop-blur-sm border-y border-white/10 relative z-10">
             <div className="container mx-auto px-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <StatItem value={5000} label="Prize Pool" prefix="$" suffix="+" />
+                    <StatItem value={30000} label="Prize Pool" prefix="₹" suffix="+" />
                     <StatItem value={500} label="Participants" suffix="+" />
                     <StatItem value={120} label="Teams" suffix="+" />
                     <StatItem value={80} label="Projects" suffix="+" />
