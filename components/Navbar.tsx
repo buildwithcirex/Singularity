@@ -99,10 +99,9 @@ const Navbar = ({ isLoading = false }: NavbarProps) => {
                         )}
                     </AnimatePresence>
 
-                    {/* Logo */}
                     <motion.div
                         layoutId="main-logo"
-                        className="relative w-12 h-12 shrink-0 mx-2"
+                        className="relative w-12 h-12 shrink-0 mx-2 rounded-full overflow-hidden"
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                         animate={{ rotate: isOpen ? 360 : 0 }}
                     >

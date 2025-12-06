@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { TextGenerateEffect } from "@/components/ui/text-generate-effect"
 import FlipCard from '@/components/animata/card/flip-card';
 
 const tracks = [
@@ -23,9 +24,7 @@ const About = () => {
                 Mission <span className="text-gold-500">Brief</span>
             </h2>
             <div className="max-w-4xl text-center mb-16">
-                <p className="text-lg md:text-xl font-inter text-gray-300">
-                    Singularity is the convergence of space and technology. We invite the brightest minds to build the future of interstellar exploration.
-                </p>
+                <TextGenerateEffect words="Singularity is more than a competition; it is a trajectory to excellence. unlike traditional hackathons, we don't just test your skills—we build them. The mission begins with a 12-day engagement, starting with 'Flight Training'—an intensive series of technical workshops to get you mission-ready. This culminates in a high-stakes, 24-hour 'Launch Sequence' , a rigorous environment designed to filter the noise and launch the careers of the next generation of tech pioneers." />
             </div>
             <div className="flex flex-col md:flex-row gap-12 items-center justify-center w-full max-w-6xl">
                 <FlipCard

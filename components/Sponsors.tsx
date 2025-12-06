@@ -3,9 +3,9 @@
 import { motion } from 'framer-motion';
 
 const sponsors = {
-    galactic: ['NASA', 'SpaceX', 'Blue Origin'],
-    stellar: ['NVIDIA', 'Google Cloud', 'AWS', 'Microsoft'],
-    planetary: ['Vercel', 'Figma', 'GitHub', 'Devfolio', 'Polygon'],
+    galactic: ['ABC Corp', 'XYZ Ltd', '123 Inc'],
+    stellar: ['Sponsor One', 'Sponsor Two', 'Sponsor Three', 'Sponsor Four'],
+    planetary: ['Partner A', 'Partner B', 'Partner C', 'Partner D', 'Partner E'],
 };
 
 const SponsorTier = ({ title, companies, size }: { title: string; companies: string[]; size: string }) => (

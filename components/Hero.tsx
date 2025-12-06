@@ -42,25 +42,28 @@ const Hero = () => {
         <section className="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 relative overflow-hidden">
 
             {/* Satellite Image */}
+            {/* Satellite Image */}
             <motion.div
-                initial={{ y: -20, opacity: 0 }}
-                animate={{
-                    y: [0, -20, 0],
-                    opacity: 1
-                }}
+                initial={{ x: -500, opacity: 0 }}
+                animate={{ x: 0, opacity: 1 }}
                 transition={{
-                    y: {
+                    duration: 2,
+                    delay: 2.5,
+                    ease: "easeOut"
+                }}
+                className="absolute top-20 left-0 md:-left-10 w-44 h-44 md:w-[27rem] md:h-[27rem] opacity-80 pointer-events-none z-0 hidden md:block"
+            >
+                <motion.img
+                    animate={{ y: [0, -20, 0] }}
+                    transition={{
                         duration: 4,
                         repeat: Infinity,
                         ease: "easeInOut"
-                    },
-                    opacity: {
-                        duration: 1
-                    }
-                }}
-                className="absolute top-20 left-0 md:-left-20 w-48 h-48 md:w-[30rem] md:h-[30rem] opacity-80 pointer-events-none z-0 hidden md:block"
-            >
-                <img src="/Satellite.svg" alt="Satellite" className="w-full h-full object-contain" />
+                    }}
+                    src="/Satellite.svg"
+                    alt="Satellite"
+                    className="w-full h-full object-contain"
+                />
             </motion.div>
 
             <motion.h1
@@ -77,8 +80,8 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex flex-col items-center relative z-10"
             >
-                <h2 className="text-2xl md:text-4xl font-orbitron text-gold-500 mb-8">
-                    Build the Future of the Galaxy
+                <h2 className="text-[22px] md:text-[34px] font-orbitron text-gold-500 mb-8">
+                    Launching the Next Generation of Innovators
                 </h2>
                 <p className="text-xl md:text-2xl font-inter text-gray-300 mb-8">
                     January 17th - 18th, 2026 • 24hr Offline Event

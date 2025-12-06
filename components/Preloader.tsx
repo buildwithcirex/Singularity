@@ -86,20 +86,18 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             )}
 
             {/* Logo Animation - Persists until unmount, moved by layoutId */}
-            {!exit && (
-                <motion.div
-                    layoutId="main-logo"
-                    className="absolute inset-0 m-auto w-40 h-40 z-10 pointer-events-none"
-                    initial={{ scale: 0.8, opacity: 0 }}
-                    animate={{
-                        scale: started ? 1 : 0.8,
-                        opacity: started ? 1 : 0
-                    }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                    <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" priority />
-                </motion.div>
-            )}
+            <motion.div
+                layoutId="main-logo"
+                className="absolute inset-0 m-auto w-40 h-40 z-10 pointer-events-none"
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{
+                    scale: started ? 1 : 0.8,
+                    opacity: started ? 1 : 0
+                }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+                <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" priority />
+            </motion.div>
         </motion.div>
     );
 }

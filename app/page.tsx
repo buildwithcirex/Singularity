@@ -18,7 +18,7 @@ export default function Home() {
 
     return (
         <main className="flex min-h-screen flex-col">
-            <AnimatePresence mode="wait">
+            <AnimatePresence>
                 {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
             </AnimatePresence>
             <Navbar isLoading={isLoading} />
