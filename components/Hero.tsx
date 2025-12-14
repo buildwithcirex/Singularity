@@ -70,7 +70,7 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="text-6xl md:text-8xl font-orbitron font-bold text-white mb-4 leading-tight tracking-wider relative z-10"
+                className="text-4xl sm:text-6xl md:text-8xl font-orbitron font-bold text-white mb-4 leading-tight tracking-wider relative z-10"
             >
                 Singularity
             </motion.h1>
@@ -80,10 +80,10 @@ const Hero = () => {
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex flex-col items-center relative z-10"
             >
-                <h2 className="text-[22px] md:text-[34px] font-orbitron text-gold-500 mb-8">
+                <h2 className="text-lg sm:text-2xl md:text-[34px] font-orbitron text-gold-500 mb-8 px-4">
                     Launching the Next Generation of Innovators
                 </h2>
-                <p className="text-xl md:text-2xl font-inter text-gray-300 mb-8">
+                <p className="text-base sm:text-lg md:text-2xl font-inter text-gray-300 mb-8 px-4">
                     January 17th - 18th, 2026 • 24hr Offline Event
                 </p>
                 <RippleButton onClick={() => window.open('https://luma.com/369a1jle', '_blank')}>

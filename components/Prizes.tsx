@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 const prizes = [
     {
@@ -61,15 +61,22 @@ const Prizes = () => {
 };
 
 const PrizeCard = ({ prize, index }: { prize: any, index: number }) => {
-    const [hovered, setHovered] = React.useState(false);
+    const [hovered, setHovered] = useState(false);
+    const [isTouch, setIsTouch] = useState(false);
+
+    useEffect(() => {
+        setIsTouch('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2 }}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            className={`relative p-8 rounded-2xl border-2 ${prize.color} ${prize.bg} ${prize.glow} bg-black w-full md:w-1/3 text-center flex flex-col items-center justify-center aspect-[3/4] overflow-hidden group`}
+            onMouseEnter={() => !isTouch && setHovered(true)}
+            onMouseLeave={() => !isTouch && setHovered(false)}
+            onClick={() => isTouch && setHovered(!hovered)}
+            className={`relative p-8 rounded-2xl border-2 ${prize.color} ${prize.bg} ${prize.glow} bg-black w-full md:w-1/3 text-center flex flex-col items-center justify-center aspect-[3/4] overflow-hidden group cursor-pointer`}
             style={{ transform: prize.scale ? `scale(${prize.scale})` : 'scale(1)' }}
         >
             <div className="absolute inset-0 h-full w-full z-0 opacity-40">

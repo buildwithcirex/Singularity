@@ -222,7 +222,8 @@ export default function Galaxy({
     const ctn = ctnDom.current;
     const renderer = new Renderer({
       alpha: transparent,
-      premultipliedAlpha: false
+      premultipliedAlpha: false,
+      dpr: Math.min(window.devicePixelRatio, 1.5)
     });
     const gl = renderer.gl;
 
@@ -262,7 +263,7 @@ export default function Galaxy({
         uFocal: { value: new Float32Array(focal) },
         uRotation: { value: new Float32Array(rotation) },
         uStarSpeed: { value: starSpeed },
-        uDensity: { value: window.innerWidth < 768 ? density * 0.3 : density },
+        uDensity: { value: window.innerWidth < 768 ? density * 0.15 : density },
         uHueShift: { value: hueShift },
         uSpeed: { value: speed },
         uMouse: {

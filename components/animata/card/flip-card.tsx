@@ -29,7 +29,7 @@ export default function FlipCard({
 
     return (
         <div
-            className="group h-96 w-80 [perspective:1000px] cursor-pointer"
+            className="group h-96 w-72 sm:w-80 [perspective:1000px] cursor-pointer"
             onClick={handleFlip}
         >
             <div

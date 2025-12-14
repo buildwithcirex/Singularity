@@ -7,17 +7,17 @@ const Footer = () => {
             <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
                 <div className="flex flex-col items-center md:items-start">
                     <span className="text-2xl font-orbitron font-bold text-white mb-2">Singularity</span>
-                    <p className="text-gray-400 font-inter text-sm">Build the Future of the Galaxy</p>
+                    <p className="text-gray-400 font-inter text-sm">Launching the Next Generation of Innovators</p>
                 </div>
 
                 <div className="flex items-center gap-6">
                     <Link href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
                         <Twitter className="w-6 h-6" />
                     </Link>
-                    <Link href="#" className="text-gray-400 hover:text-gold-500 transition-colors">
+                    <Link href="https://www.instagram.com/singularity.hack" className="text-gray-400 hover:text-gold-500 transition-colors">
                         <Instagram className="w-6 h-6" />
                     </Link>
-                    <Link href="mailto:contact@singularity.com" className="text-gray-400 hover:text-gold-500 transition-colors">
+                    <Link href="mailto:singularity@kccemsr.edu.in" className="text-gray-400 hover:text-gold-500 transition-colors">
                         <Mail className="w-6 h-6" />
                     </Link>
                 </div>
