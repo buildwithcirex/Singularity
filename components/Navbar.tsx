@@ -6,10 +6,14 @@ import { Menu, X } from 'lucide-react';
 
 interface NavbarProps {
     isLoading?: boolean;
+    isOpen?: boolean;
+    setIsOpen?: (open: boolean) => void;
 }
 
-const Navbar = ({ isLoading = false }: NavbarProps) => {
-    const [isOpen, setIsOpen] = useState(false);
+const Navbar = ({ isLoading = false, isOpen: externalIsOpen, setIsOpen: externalSetIsOpen }: NavbarProps) => {
+    const [internalIsOpen, setInternalIsOpen] = useState(false);
+    const isOpen = externalIsOpen !== undefined ? externalIsOpen : internalIsOpen;
+    const setIsOpen = externalSetIsOpen || setInternalIsOpen;
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const navRef = useRef<HTMLElement>(null);
 
@@ -93,7 +97,8 @@ const Navbar = ({ isLoading = false }: NavbarProps) => {
                         initial="closed"
                         animate={isOpen ? "open" : "closed"}
                         variants={containerVariants}
-                        onClick={() => setIsOpen(!isOpen)}
+                        onMouseEnter={() => setIsOpen(true)}
+                        onMouseLeave={() => setIsOpen(false)}
                     >
                         <AnimatePresence>
                             {isOpen && (
@@ -120,8 +125,8 @@ const Navbar = ({ isLoading = false }: NavbarProps) => {
                         <motion.div
                             layoutId="main-logo"
                             className="relative w-12 h-12 shrink-0 mx-2 rounded-full overflow-hidden"
-                            transition={{ duration: 0.6, ease: "easeInOut" }}
-                            animate={{ rotate: isOpen ? 360 : 0 }}
+                            transition={{ duration: 0.3, ease: "easeOut" }}
+                            animate={{ scale: isOpen ? 1.2 : 1 }}
                         >
                             <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" />
                         </motion.div>

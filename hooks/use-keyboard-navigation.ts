@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-export const useKeyboardNavigation = () => {
+export const useKeyboardNavigation = (onNavbarToggle?: () => void) => {
     useEffect(() => {
         const handleKeyPress = (event: KeyboardEvent) => {
             const key = event.key.toLowerCase();
@@ -23,8 +23,10 @@ export const useKeyboardNavigation = () => {
                     targetId = 'sponsors';
                     break;
                 case 'n':
-                    // Scroll to top
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    // Toggle navbar
+                    if (onNavbarToggle) {
+                        onNavbarToggle();
+                    }
                     return;
                 default:
                     return;

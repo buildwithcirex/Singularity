@@ -17,14 +17,16 @@ import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true);
-    useKeyboardNavigation();
+    const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+    
+    useKeyboardNavigation(() => setIsNavbarOpen(prev => !prev));
 
     return (
         <main className="flex min-h-screen flex-col">
             <AnimatePresence>
                 {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
             </AnimatePresence>
-            <Navbar isLoading={isLoading} />
+            <Navbar isLoading={isLoading} isOpen={isNavbarOpen} setIsOpen={setIsNavbarOpen} />
             <KeyboardShortcuts />
             <Hero />
             <About />
