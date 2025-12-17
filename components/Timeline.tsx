@@ -66,7 +66,7 @@ export const Timeline = () => {
         <div
             className="w-full bg-black font-sans md:px-10"
             ref={containerRef}
-            id="schedule"
+            id="timeline"
         >
             <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-white font-orbitron">Flight Trajectory</h2>

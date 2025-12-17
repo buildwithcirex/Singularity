@@ -10,11 +10,14 @@ import Sponsors from "@/components/Sponsors";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
+import KeyboardShortcuts from "@/components/KeyboardShortcuts";
 import { useState, useEffect } from "react";
 import { AnimatePresence } from "framer-motion";
+import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true);
+    useKeyboardNavigation();
 
     return (
         <main className="flex min-h-screen flex-col">
@@ -22,6 +25,7 @@ export default function Home() {
                 {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
             </AnimatePresence>
             <Navbar isLoading={isLoading} />
+            <KeyboardShortcuts />
             <Hero />
             <About />
             <Stats />

@@ -39,7 +39,7 @@ const Countdown = () => {
 
 const Hero = () => {
     return (
-        <section className="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 relative overflow-hidden">
+        <section id="hero" className="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 relative overflow-hidden">
 
             {/* Satellite Image */}
             {/* Satellite Image */}
@@ -81,13 +81,13 @@ const Hero = () => {
                 className="flex flex-col items-center relative z-10"
             >
                 <h2 className="text-lg sm:text-2xl md:text-[34px] font-orbitron text-gold-500 mb-8 px-4">
-                    Launching the Next Generation of Innovators
+                    Building... cause we love it 
                 </h2>
                 <p className="text-base sm:text-lg md:text-2xl font-inter text-gray-300 mb-8 px-4">
                     January 17th - 18th, 2026 • 24hr Offline Event
                 </p>
                 <RippleButton onClick={() => window.open('https://luma.com/369a1jle', '_blank')}>
-                    Register Now
+                    Register Now!!
                 </RippleButton>
                 <Countdown />
             </motion.div>
