@@ -22,11 +22,20 @@ export const metadata: Metadata = {
     icons: {
         icon: '/logo.svg',
     },
+    metadataBase: new URL('https://yourdomain.com'), // Replace with your actual domain
     openGraph: {
         title: "Singularity Hackathon",
         description: "Build the Future of the Galaxy",
-        images: ['/thumb.png'],
+        images: [
+            {
+                url: '/thumb.png',
+                width: 1200,
+                height: 630,
+                alt: 'Singularity Hackathon',
+            }
+        ],
         type: 'website',
+        url: '/',
     },
     twitter: {
         card: 'summary_large_image',
