@@ -1,5 +1,9 @@
+'use client';
+
 import { Twitter, Instagram, Mail } from 'lucide-react';
 import Link from 'next/link';
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 const Footer = () => {
     return (
@@ -25,6 +29,20 @@ const Footer = () => {
                 <div className="text-gray-500 text-sm font-inter">
                     © 2025 Singularity Hackathon. All rights reserved.
                 </div>
+            </div>
+            
+            {/* Built with CIREX */}
+            <div className="flex justify-center mt-8">
+                <Link href="https://github.com/yourusername/yourrepo" target="_blank" rel="noopener noreferrer">
+                    <div className="relative w-48 h-20 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
+                        <Image 
+                            src="/buildwithcirex.svg" 
+                            alt="Built with CIREX" 
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                </Link>
             </div>
         </footer>
     );

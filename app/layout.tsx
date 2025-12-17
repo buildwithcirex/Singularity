@@ -19,6 +19,9 @@ const inter = Inter({
 export const metadata: Metadata = {
     title: "Singularity Hackathon",
     description: "Build the Future of the Galaxy",
+    icons: {
+        icon: '/logo.svg',
+    },
 };
 
 export default function RootLayout({

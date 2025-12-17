@@ -7,7 +7,7 @@ import RippleButton from '@/components/animata/button/ripple-button';
 const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    useEffect(() => {
+    useEffect(() => {git
         const targetDate = new Date('2026-01-17T00:00:00'); // Updated date
         const interval = setInterval(() => {
             const now = new Date();
@@ -40,6 +40,29 @@ const Countdown = () => {
 const Hero = () => {
     return (
         <section id="hero" className="min-h-screen flex flex-col items-center justify-center text-center pt-20 px-4 relative overflow-hidden">
+
+            {/* Built with CIREX - Top Right */}
+            <motion.a
+                href="https://github.com/yourusername/yourrepo"
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ 
+                    opacity: 1, 
+                    y: 0
+                }}
+                transition={{ 
+                    opacity: { duration: 1, delay: 1 },
+                    y: { duration: 1, delay: 1 }
+                }}
+                className="absolute top-8 right-8 w-40 md:w-52 h-16 md:h-20 z-20 opacity-80 hover:opacity-100 transition-opacity cursor-pointer"
+            >
+                <img 
+                    src="/buildwithcirex.svg" 
+                    alt="Built with CIREX" 
+                    className="w-full h-full object-contain"
+                />
+            </motion.a>
 
             {/* Satellite Image */}
             {/* Satellite Image */}
