@@ -7,7 +7,7 @@ import RippleButton from '@/components/animata/button/ripple-button';
 const Countdown = () => {
     const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
-    useEffect(() => {git
+    useEffect(() => {
         const targetDate = new Date('2026-01-17T00:00:00'); // Updated date
         const interval = setInterval(() => {
             const now = new Date();
