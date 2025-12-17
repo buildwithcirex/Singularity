@@ -22,6 +22,18 @@ export const metadata: Metadata = {
     icons: {
         icon: '/logo.svg',
     },
+    openGraph: {
+        title: "Singularity Hackathon",
+        description: "Build the Future of the Galaxy",
+        images: ['/thumb.png'],
+        type: 'website',
+    },
+    twitter: {
+        card: 'summary_large_image',
+        title: "Singularity Hackathon",
+        description: "Build the Future of the Galaxy",
+        images: ['/thumb.png'],
+    },
 };
 
 export default function RootLayout({
