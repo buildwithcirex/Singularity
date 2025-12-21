@@ -6,11 +6,17 @@
   --color-gold-900: #3E3215;
   --font-orbitron: var(--font-orbitron);
   --font-inter: var(--font-inter);
+  --font-jetbrains-mono: var(--font-jetbrains-mono);
 }
 
 body {
   background-color: black;
   color: white;
+  cursor: none;
+}
+
+a, button, [role="button"], input, textarea, select {
+  cursor: none;
 }
 
 html {

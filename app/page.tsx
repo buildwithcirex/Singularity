@@ -1,19 +1,22 @@
 'use client';
 
+import dynamic from 'next/dynamic';
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import Stats from "@/components/Stats";
-import Timeline from "@/components/Timeline";
-import Prizes from "@/components/Prizes";
-import Sponsors from "@/components/Sponsors";
-import FAQ from "@/components/FAQ";
-import Footer from "@/components/Footer";
 import Preloader from "@/components/Preloader";
 import KeyboardShortcuts from "@/components/KeyboardShortcuts";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { useKeyboardNavigation } from "@/hooks/use-keyboard-navigation";
+
+// Dynamically import components below the fold
+const About = dynamic(() => import("@/components/About"));
+const Stats = dynamic(() => import("@/components/Stats"));
+const Timeline = dynamic(() => import("@/components/Timeline"));
+const Prizes = dynamic(() => import("@/components/Prizes"));
+const Sponsors = dynamic(() => import("@/components/Sponsors"));
+const FAQ = dynamic(() => import("@/components/FAQ"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
     const [isLoading, setIsLoading] = useState(true);

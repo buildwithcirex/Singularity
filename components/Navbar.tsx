@@ -128,7 +128,7 @@ const Navbar = ({ isLoading = false, isOpen: externalIsOpen, setIsOpen: external
                             transition={{ duration: 0.3, ease: "easeOut" }}
                             animate={{ scale: isOpen ? 1.2 : 1 }}
                         >
-                            <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" />
+                            <Image src="/logo1.svg" alt="Singularity Logo" fill className="object-contain" />
                         </motion.div>
 
                         <AnimatePresence>
@@ -192,7 +192,7 @@ const Navbar = ({ isLoading = false, isOpen: externalIsOpen, setIsOpen: external
                                 transition={{ delay: 0.2, type: 'spring' }}
                                 className="relative w-20 h-20 mb-8"
                             >
-                                <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" />
+                                <Image src="/logo1.svg" alt="Singularity Logo" fill className="object-contain" />
                             </motion.div>
 
                             {allItems.map((item, index) => (

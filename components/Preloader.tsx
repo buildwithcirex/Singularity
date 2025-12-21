@@ -67,15 +67,15 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                     {[...Array(3)].map((_, i) => (
                         <motion.div
                             key={i}
-                            className="absolute rounded-full border-2 border-gold-500"
-                            initial={{ width: 0, height: 0, opacity: 1 }}
+                            className="absolute rounded-full border border-gold-500/40"
+                            style={{ width: '100px', height: '100px' }}
+                            initial={{ scale: 0, opacity: 1 }}
                             animate={{
-                                width: '800px',
-                                height: '800px',
+                                scale: 20,
                                 opacity: 0,
                             }}
                             transition={{
-                                duration: 2,
+                                duration: 2.5,
                                 repeat: Infinity,
                                 delay: i * 0.4,
                                 ease: "easeOut"
@@ -96,7 +96,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 }}
                 transition={{ duration: 0.8, ease: "easeOut" }}
             >
-                <Image src="/logo.svg" alt="Singularity Logo" fill className="object-contain" priority />
+                <Image src="/logo1.svg" alt="Singularity Logo" fill className="object-contain" priority />
             </motion.div>
         </motion.div>
     );

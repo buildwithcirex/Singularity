@@ -89,24 +89,24 @@ const Hero = () => {
                 />
             </motion.div>
 
-            <motion.h1
+            <motion.img
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.5, ease: "easeOut" }}
-                className="text-4xl sm:text-6xl md:text-8xl font-orbitron font-bold text-white mb-4 leading-tight tracking-wider relative z-10"
-            >
-                Singularity
-            </motion.h1>
+                src="/lettering.svg"
+                alt="Singularity"
+                className="w-full max-w-2xl md:max-w-4xl h-auto mb-4 relative z-10"
+            />
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
                 className="flex flex-col items-center relative z-10"
             >
-                <h2 className="text-lg sm:text-2xl md:text-[34px] font-orbitron text-gold-500 mb-8 px-4">
+                <h2 className="text-lg sm:text-2xl md:text-[25px] font-orbitron text-gold-500 mb-8 px-4">
                     Building... cause we love it 
                 </h2>
-                <p className="text-base sm:text-lg md:text-2xl font-inter text-gray-300 mb-8 px-4">
+                <p className="text-base sm:text-lg md:text-[18px] font-jetbrains-mono text-gray-300 mb-8 px-4">
                     January 17th - 18th, 2026 • 24hr Offline Event
                 </p>
                 <RippleButton onClick={() => window.open('https://luma.com/369a1jle', '_blank')}>
