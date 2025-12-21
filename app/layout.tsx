@@ -29,7 +29,7 @@ const audiowide = Audiowide({
 
 export const metadata: Metadata = {
     title: "Singularity Hackathon",
-    description: "Build the Future of the Galaxy",
+    description: "KC's first 24 hour hackathon. ",
     icons: {
         icon: '/logo.svg',
     },
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
         description: "Build the Future of the Galaxy",
         images: [
             {
-                url: 'https://www.singularityhack.tech/thumb.png',
+                url: '/opengraph.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'Singularity Hackathon',
@@ -52,7 +52,7 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: "Singularity Hackathon",
         description: "Build the Future of the Galaxy",
-        images: ['/thumb.png'],
+        images: ['/opengraph.jpg'],
     },
 };
 

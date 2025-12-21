@@ -46,7 +46,7 @@ export default function BackgroundMusic() {
       />
       
       <div 
-        className="fixed bottom-8 left-8 z-50 cursor-pointer group perspective-[1000px]"
+        className="fixed bottom-8 left-8 z-50 cursor-pointer group perspective-[1000px] hidden md:block"
         onClick={togglePlay}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
