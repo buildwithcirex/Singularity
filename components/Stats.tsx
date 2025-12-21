@@ -1,37 +1,25 @@
 'use client';
 
-import { useInView } from 'framer-motion';
-import { useRef, useEffect, useState } from 'react';
+import { useInView, animate, motion, useMotionValue, useTransform } from 'framer-motion';
+import { useRef, useEffect } from 'react';
 
 const StatItem = ({ value, label, prefix = '', suffix = '' }: { value: number; label: string; prefix?: string; suffix?: string }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
-    const [count, setCount] = useState(0);
+    const count = useMotionValue(0);
+    const rounded = useTransform(count, (latest) => Math.round(latest));
 
     useEffect(() => {
         if (isInView) {
-            const duration = 2000; // 2 seconds
-            const steps = 60;
-            const stepTime = duration / steps;
-            const increment = value / steps;
-            let current = 0;
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= value) {
-                    setCount(value);
-                    clearInterval(timer);
-                } else {
-                    setCount(Math.floor(current));
-                }
-            }, stepTime);
-            return () => clearInterval(timer);
+            const controls = animate(count, value, { duration: 2 });
+            return controls.stop;
         }
-    }, [isInView, value]);
+    }, [isInView, value, count]);
 
     return (
         <div ref={ref} className="flex flex-col items-center p-6">
-            <span className="text-5xl md:text-7xl font-orbitron font-bold text-gold-500 mb-2">
-                {prefix}{count}{suffix}
+            <span className="text-5xl md:text-7xl font-orbitron font-bold text-gold-500 mb-2 flex">
+                {prefix}<motion.span>{rounded}</motion.span>{suffix}
             </span>
             <span className="text-xl font-inter text-white uppercase tracking-widest">{label}</span>
         </div>

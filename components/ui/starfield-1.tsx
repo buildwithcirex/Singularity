@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 
 // Fast UUID generator, RFC4122 version 4 compliant
 const generateUUID = () => {
@@ -74,41 +73,19 @@ const Starfield = ({
         prevTime: 0,
     });
 
-    const colors = {
+    // Memoize derived values
+    const colors = useMemo(() => ({
         fill: state.hyperspace ? `rgba(0,0,0,${opacity})` : bgColor,
-    };
+    }), [state.hyperspace, opacity, bgColor]);
 
-    const compSpeed = state.hyperspace ? speed * warpFactor : speed;
-    const ratio = quantity / 2;
-
-    const measureViewport = () => {
-        const el = canvasRef.current?.parentElement;
-        if (el) {
-            sd.current.w = el.clientWidth;
-            sd.current.h = el.clientHeight;
-            sd.current.x = Math.round(sd.current.w / 2);
-            sd.current.y = Math.round(sd.current.h / 2);
-            sd.current.z = (sd.current.w + sd.current.h) / 2;
-            sd.current.star.colorRatio = 1 / sd.current.z;
-
-            if (cursor.current.x === 0 || cursor.current.y === 0) {
-                cursor.current.x = sd.current.x;
-                cursor.current.y = sd.current.y;
-            }
-            if (mouse.current.x === 0 || mouse.current.y === 0) {
-                mouse.current.x = cursor.current.x - sd.current.x;
-                mouse.current.y = cursor.current.y - sd.current.y;
-            }
-        }
-    };
+    const compSpeed = useMemo(() => state.hyperspace ? speed * warpFactor : speed, [state.hyperspace, speed, warpFactor]);
+    const ratio = useMemo(() => quantity / 2, [quantity]);
 
     const setupCanvas = () => {
-        measureViewport();
         const canvas = canvasRef.current;
         if (canvas) {
             sd.current.ctx = canvas.getContext('2d');
-            canvas.width = sd.current.w;
-            canvas.height = sd.current.h;
+            // Dimensions are set by ResizeObserver
             if (sd.current.ctx) {
                 sd.current.ctx.fillStyle = colors.fill;
                 sd.current.ctx.strokeStyle = starColor;
@@ -126,48 +103,32 @@ const Starfield = ({
                 0,
                 0,
                 0,
-                1, // Using 1 for true, 0 for false for easier typing
+                1, 
             ]);
         }
     };
 
-    const resize = () => {
-        const oldStar = { ...sd.current.star };
-        measureViewport();
-        sd.current.cw = sd.current.ctx?.canvas.width || 0;
-        sd.current.ch = sd.current.ctx?.canvas.height || 0;
+    const resize = (width: number, height: number) => {
+        sd.current.w = width;
+        sd.current.h = height;
+        sd.current.x = Math.round(width / 2);
+        sd.current.y = Math.round(height / 2);
+        sd.current.z = (width + height) / 2;
+        sd.current.star.colorRatio = 1 / sd.current.z;
 
-        if (sd.current.cw !== sd.current.w || sd.current.ch !== sd.current.h) {
-            sd.current.x = Math.round(sd.current.w / 2);
-            sd.current.y = Math.round(sd.current.h / 2);
-            sd.current.z = (sd.current.w + sd.current.h) / 2;
-            sd.current.star.colorRatio = 1 / sd.current.z;
-
-            const rw = sd.current.w / sd.current.cw;
-            const rh = sd.current.h / sd.current.ch;
-
-            if (sd.current.ctx) {
-                sd.current.ctx.canvas.width = sd.current.w;
-                sd.current.ctx.canvas.height = sd.current.h;
-            }
-
-            if (!sd.current.star.arr.length) {
-                bigBang();
-            } else {
-                sd.current.star.arr = sd.current.star.arr.map((star, i) => {
-                    const newStar = [...star];
-                    newStar[0] = oldStar.arr[i][0] * rw;
-                    newStar[1] = oldStar.arr[i][1] * rh;
-                    newStar[3] = sd.current.x + (newStar[0] / newStar[2]) * ratio;
-                    newStar[4] = sd.current.y + (newStar[1] / newStar[2]) * ratio;
-                    return newStar;
-                });
-            }
-
-            if (sd.current.ctx) {
-                sd.current.ctx.fillStyle = colors.fill;
-                sd.current.ctx.strokeStyle = starColor;
-            }
+        const canvas = canvasRef.current;
+        if (canvas) {
+             canvas.width = width;
+             canvas.height = height;
+        }
+        
+        if (!sd.current.star.arr.length) {
+            bigBang();
+        } 
+        
+        if (sd.current.ctx) {
+            sd.current.ctx.fillStyle = colors.fill;
+            sd.current.ctx.strokeStyle = starColor;
         }
     };
 
@@ -249,14 +210,12 @@ const Starfield = ({
         if (sd.current.prevTime === 0) {
             sd.current.prevTime = Date.now();
         }
-        resize();
         update();
         draw();
         animationFrameRef.current = requestAnimationFrame(animate);
     };
 
     const init = () => {
-        measureViewport();
         setupCanvas();
         bigBang();
         animate();
@@ -319,6 +278,22 @@ const Starfield = ({
             setState(prev => ({ ...prev, hyperspace: false }));
         }
     };
+
+    useEffect(() => {
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const observer = new ResizeObserver((entries) => {
+            for (const entry of entries) {
+                const { width, height } = entry.contentRect;
+                resize(width, height);
+            }
+        });
+
+        observer.observe(canvas.parentElement!);
+
+        return () => observer.disconnect();
+    }, []);
 
     useEffect(() => {
         const el = canvasRef.current?.parentElement;
