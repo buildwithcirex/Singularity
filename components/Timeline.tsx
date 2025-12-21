@@ -2,7 +2,7 @@
 
 import { useScroll, useTransform, motion } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import { Rocket, Code, Users, Award, Calendar } from "lucide-react";
+import { Rocket, Code, Users, Award, Calendar, Braces, CircleX, Gamepad2,Guitar} from "lucide-react";
 
 interface TimelineEntry {
     title: string;
@@ -11,33 +11,51 @@ interface TimelineEntry {
 
 const milestones = [
     {
-        year: "Dec 15",
-        title: "Registration Opens",
-        description: "Applications open for all tracks.",
+        year: "Flight Training",
+        title: "Webinars & Workshops",
+        description: "Jan 6 - Jan 16",
+        icon:<Calendar className="w-5 h-5 text-black" /> ,
+    },
+    {
+        year: "Key Note",
+        title: "Kickoff and Problem Statements reveal",
+        description: "Jan 17 10:30 am ",
         icon: <Rocket className="w-5 h-5 text-black" />,
     },
     {
-        year: "Jan 17",
-        title: "Opening Ceremony",
-        description: "Kickoff and Problem Statements.",
-        icon: <Calendar className="w-5 h-5 text-black" />,
+        year: "DevmodeOn", 
+        title: "Hacking Starts",
+        description: "Jan 17 12:30 pm",
+        icon: <Braces className="w-5 h-5 text-black" />,
     },
     {
-        year: "Jan 17",
-        title: "Hacking Starts",
-        description: "Build your solutions.",
+        year: "Review Round 1",
+        title: "ELiminations • Top 25 Teams Stay For later Rounds ",
+        description: "Jan 17 4:30 pm - 5:30 pm",
+        icon: <CircleX className="w-5 h-5 text-black" />,
+    },
+    {
+        year: "Gaming Cafe",
+        title: "Play & Relax with our PS5 Setups  ",
+        description: "Jan 17 6:30 pm onwards",
+        icon: <Gamepad2 className="w-5 h-5 text-black" />,
+    },
+    {
+        year: "Music   Jam ",
+        title: "Unwind with Live Performances and Dance ",
+        description: "Jan 17 10:30 pm onwards",
+        icon: <Guitar className="w-5 h-5 text-black" />,
+    },
+    {
+        year: "Presentation and Demos",
+        title: "Demo your Projects to Judges",
+        description: "Jan 18 7:00 am",
         icon: <Code className="w-5 h-5 text-black" />,
     },
     {
-        year: "Jan 18",
-        title: "Submission Deadline",
-        description: "Submit your projects.",
-        icon: <Award className="w-5 h-5 text-black" />,
-    },
-    {
-        year: "Jan 18",
-        title: "Closing Ceremony",
-        description: "Winners Announcement.",
+        year: "Finale",
+        title: "And the Winners are...",
+        description: "Jan 18 10:00 am",
         icon: <Award className="w-5 h-5 text-black" />,
     },
 ];
@@ -71,7 +89,7 @@ export const Timeline = () => {
             <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
                 <h2 className="text-3xl md:text-5xl font-bold mb-4 text-center text-white font-orbitron">Flight Trajectory</h2>
                 <p className="text-lg text-gray-400 max-w-2xl mx-auto text-center font-inter mb-12">
-                    Follow the mission path
+                    Hackthon Timeline (Brief timeline ~ the Detailed one in the Brochere)
                 </p>
 
                 <div ref={ref} className="relative max-w-7xl mx-auto pb-20">

@@ -43,7 +43,7 @@ const KeyboardShortcuts = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: 20 }}
                     transition={{ duration: 0.3 }}
-                    className="fixed bottom-8 right-8 z-50 bg-black/50 backdrop-blur-sm border border-gold-500/30 rounded-lg p-4 shadow-lg"
+                    className="fixed bottom-8 right-8 z-50 bg-black/50 backdrop-blur-sm border border-gold-500/30 rounded-lg p-4 shadow-lg hidden md:block"
                 >
                     <h3 className="text-gold-500 font-orbitron text-sm mb-3 font-bold">
                         Keyboard Shortcuts

@@ -6,7 +6,7 @@ import { Rocket } from 'lucide-react';
 const Sponsors = () => {
     const handleSponsorClick = () => {
         // Replace with your Google Form link
-        window.open('https://forms.google.com/your-sponsor-form', '_blank');
+        window.open('', '_blank');
     };
 
     return (

@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     metadataBase: new URL('https://www.singularityhack.tech'),
     openGraph: {
         title: "Singularity Hackathon",
-        description: "Build the Future of the Galaxy",
+        description: "Early bird tickets are out!",
         images: [
             {
                 url: '/opengraph.jpg',
