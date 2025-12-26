@@ -36,7 +36,7 @@ export default function Home() {
             <Stats />
             <Timeline />
             <Prizes />
-            <Sponsors />
+            
             <FAQ />
             <Footer />
         </main>

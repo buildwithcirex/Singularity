@@ -33,7 +33,7 @@ const Footer = () => {
             
             {/* Built with CIREX */}
             <div className="flex justify-center mt-8">
-                <Link href="https://github.com/yourusername/yourrepo" target="_blank" rel="noopener noreferrer">
+                <Link href="/" target="_blank" rel="noopener noreferrer">
                     <div className="relative w-48 h-20 opacity-80 hover:opacity-100 transition-opacity cursor-pointer">
                         <Image 
                             src="/buildwithcirex.svg" 
