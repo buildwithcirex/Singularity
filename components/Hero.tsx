@@ -104,9 +104,14 @@ const Hero = () => {
                 className="flex flex-col items-center relative z-10"
             >
                
-                <RippleButton onClick={() => window.open('https://tally.so/r/J9dD9J', '_blank')}>
-                    Register Now!!
-                </RippleButton>
+                <div className="flex flex-col sm:flex-row gap-4">
+                    <RippleButton onClick={() => window.open('https://tally.so/r/J9dD9J', '_blank')}>
+                        Register Now!!
+                    </RippleButton>
+                    <RippleButton onClick={() => window.open('https://tally.so/r/yP2xNB', '_blank')}>
+                        Register for Workshops
+                    </RippleButton>
+                </div>
                 
                 <Countdown />
             </motion.div>
